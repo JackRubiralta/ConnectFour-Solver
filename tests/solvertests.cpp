@@ -16,7 +16,22 @@ void test1() {
     if (negamax(game, 13) == 18) {
         std::cout << "Test 1.1 passed!" << std::endl;
     } else {
-        std::cout << "Test 1.1 failed!" << std::endl;
+        std::cout << "Test 1.1 failed!" << negamax(game, 13) << std::endl;
+    };
+
+    game = ConnectFour();
+    game.playColumn(2);
+    game.playColumn(2);
+    game.playColumn(3);
+    game.playColumn(3);
+    game.playColumn(1);
+    game.playColumn(0);
+
+
+    if (negamax(game, 13) == 18) {
+        std::cout << "Test 1.1 passed!" << std::endl;
+    } else {
+        std::cout << "Test 1.1 failed!" << negamax(game, 13) << std::endl;
     };
 }
 

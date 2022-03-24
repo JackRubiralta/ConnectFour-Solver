@@ -113,21 +113,35 @@ class ConnectFour {
         
         bitboard possibleNonLosingMoves() const {
             bitboard possibleMask = possible();
-            bitboard opponentWin = opponentWinningPosition();
+            bitboard opponentWin = opponentWinningPositions();
             bitboard forcedMoves = possibleMask & opponentWin;
             if (forcedMoves) {
-                if(forcedMoves & (forcedMoves - 1)) // check if there is more than one forced move
-                return 0;                           // the opponnent has two winning moves and you cannot stop him
-                else possibleMask = forcedMoves;    // enforce to play the single forced move
+                if (forcedMoves & (forcedMoves - 1)) {
+                    return 0;      
+                } else {
+                    possibleMask = forcedMoves;
+                }
             }
             return possibleMask & ~(opponentWin >> 1);  // avoid to play below an opponent winning spot
         }
 
-        bitboard opponentWinningPosition() const {
-            return winningPositions(position ^ mask, mask);
+        bool gameOver() const {
+            
         }
 
-        static bitboard winningPositions(bitboard position, bitboard mask) {
+        bool canWinNext() const {
+            return winningPositions() & possible();
+        }
+
+        bitboard winningPositions() const {
+            return computeWinningPositions(position, mask);
+        }
+
+        bitboard opponentWinningPositions() const {
+            return computeWinningPositions(position ^ mask, mask);
+        }
+
+        static bitboard computeWinningPositions(bitboard position, bitboard mask) {
             // vertical;
             bitboard r = (position << 1) & (position << 2) & (position << 3);
 

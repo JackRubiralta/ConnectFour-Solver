@@ -1,4 +1,4 @@
-depth = 5
+depth = 15
 
 # Negamax with alpha beta pruning
 Time: 14949 ms
@@ -9,3 +9,8 @@ Time: 14225 ms
 Time: 5769 ms
 Time: 4521 ms
 Time: 3855 ms
+
+# Negamax with alpha beta pruning and move sorting from middle out and anticipating loosing moves
+Time: 618 ms
+Time: 470 ms
+Time: 527 ms

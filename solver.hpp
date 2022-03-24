@@ -6,18 +6,18 @@
 const int columnOrder[ConnectFour::WIDTH] = {3, 2, 4, 1, 5, 0, 6};
 
 int negamax(const ConnectFour &node, int alpha, int beta, int depth) {
-    if (depth <= 0 || node.isDraw()) { return 0; }
- 
-    // if we do move prediction, we can return a positive value    
-    if (node.isAlignment()) {
-        return -((ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - node.moveCounter) / 2);
-    } 
+    bitboard possible = node.possibleNonLosingMoves();
 
-    if (node.isAlignment()) { return -1; }
+    // if no possible non losing move, opponent wins next move
+    if (possible == 0) {
+        return -((ConnectFour::WIDTH * ConnectFour::HEIGHT - node.moveCounter) / 2);
+    }
+
+    if (depth <= 0 || node.isDraw()) { return 0; }
+
 
     int value = -100;
 
-    bitboard possible = node.possible();
     ConnectFour child;
     for (int i : columnOrder) { // could loop through moves
         bitboard move = possible & ConnectFour::columnMask(i);
@@ -35,6 +35,9 @@ int negamax(const ConnectFour &node, int alpha, int beta, int depth) {
 
 
 int negamax(const ConnectFour &node, int depth) {
+    if (node.canWinNext()) {
+        return (ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - node.moveCounter) / 2;
+    }
     return negamax(node, -100, 100, depth);
 };
 

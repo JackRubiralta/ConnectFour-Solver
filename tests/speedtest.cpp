@@ -5,7 +5,7 @@
 
 void speedTest() {
     std::cout << std::endl << "TimmingTest:" << std::endl;
-    const int DEPTH = 16;
+    const int DEPTH = 15;
     ConnectFour game = ConnectFour();
 
     
