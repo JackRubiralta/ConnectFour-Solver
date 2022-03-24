@@ -1,0 +1,11 @@
+depth = 5
+
+# Negamax with alpha beta pruning
+Time: 14949 ms
+Time: 14151 ms
+Time: 14225 ms
+
+# Negamax with alpha beta pruning and move sorting from middle out
+Time: 5769 ms
+Time: 4521 ms
+Time: 3855 ms
