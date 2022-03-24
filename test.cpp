@@ -44,7 +44,25 @@ void test1() {
     } else {
         std::cout << "Test 1.2 failed!" << std::endl;
     }
+    
+    // Test 1.3
+    ConnectFour game1 = ConnectFour();
+    game1.playColumn(0);
+    game1.playColumn(0);
+    game1.playColumn(0);
+    game1.playColumn(0);
+    game1.playColumn(0);
+    game1.playColumn(0);
+
+    if (game1.yellow() == 42 && game1.red() == 21) {
+        std::cout << "Test 1.3 passed!" << std::endl;
+    } else {
+        std::cout << "Test 1.3 failed!" << std::endl;
+        std::cout << "red bitboard: " << game1.red() << std::endl;
+        std::cout << "yellow bitboard: " << game1.yellow() << std::endl;
+    }
 }
+
 
 void test2() {
     std::cout << std::endl << "Test 2:" << std::endl;
@@ -91,6 +109,7 @@ void test2() {
     };
 }
 
+
 void test3() {
     std::cout << std::endl << "Test 3:" << std::endl;
 
@@ -121,6 +140,7 @@ void test3() {
     
 }
 
+
 void test4() {
     std::cout << std::endl << "Test 4:" << std::endl;
     ConnectFour game;
@@ -128,21 +148,122 @@ void test4() {
     game = ConnectFour();
     game.playColumn(0);
     game.playColumn(1);
+    game.playColumn(0);
+    game.playColumn(1);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+}
+
+void test5() {
+    std::cout << std::endl << "Test 5:" << std::endl;
+    ConnectFour game;
+    
+    game = ConnectFour();
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(1);
+    game.playColumn(1);
+    game.playColumn(1);
+    game.playColumn(1);
+    game.playColumn(1);
     game.playColumn(1);
     game.playColumn(2);
     game.playColumn(2);
-    game.playColumn(3);
     game.playColumn(2);
-    game.playColumn(3);
-    game.playColumn(3);
+    game.playColumn(2);
+    game.playColumn(2);
+    game.playColumn(2);
+    game.playColumn(4);
+    game.playColumn(4);
+    game.playColumn(4);
+    game.playColumn(4);
+    game.playColumn(4);
+    game.playColumn(4);
     game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(6);
+    game.playColumn(6);
+    game.playColumn(6);
+    game.playColumn(6);
+    game.playColumn(6);
     game.playColumn(3);
-    game.print();
+    game.playColumn(3);
+    game.playColumn(3);
+    game.playColumn(3);
+    game.playColumn(3);
+    game.playColumn(3);
+    game.playColumn(6);
+
+    if (game.isDraw()) {
+        std::cout << "Test 5.1 passed!" << std::endl;
+    } else {
+        std::cout << "Test 5.1 failed!" << std::endl;
+    };
+
+    game = ConnectFour();
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(1);
+    game.playColumn(5);
+    if (!game.isDraw()) {
+        std::cout << "Test 5.2 passed!" << std::endl;
+    } else {
+        std::cout << "Test 5.2 failed!" << std::endl;
+    };
+};
+
+void test6() {
+    std::cout << std::endl << "Test 6:" << std::endl;
+    ConnectFour game;
+
+    game = ConnectFour();
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+    game.playColumn(5);
+
+    game.playColumn(2);
+    game.playColumn(2);
+    game.playColumn(2);
+
+    game.playColumn(3);
+
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+    game.playColumn(0);
+
+    game.playColumn(1);
+    game.playColumn(1);
+
+    game.playColumn(4);
+    game.playColumn(4);
+
+
+    if (game.possible() == 4399124578848) {
+        std::cout << "Test 6.1 passed!" << std::endl;
+    } else {
+        std::cout << "Test 6.1 failed!" << std::endl;
+    };
 }
 
 int main() {  
-    //test1();
-    //test2();
-    //test3();
+    test1();
+    test2();
+    test3();
     test4();
+    test5();
+    test6();
 };
