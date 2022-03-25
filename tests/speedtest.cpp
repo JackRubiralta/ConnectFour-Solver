@@ -6,11 +6,12 @@
 void speedTest() {
     std::cout << std::endl << "TimmingTest:" << std::endl;
     const int DEPTH = 15;
+
     ConnectFour game = ConnectFour();
 
     
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    negamax(game, DEPTH);
+    analyze(game, DEPTH);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();    
     std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << " ms" << std::endl;
 }

@@ -1,7 +1,7 @@
 #include "../solver.hpp"
 #include <chrono>
 
-// some tests involving the negamax algorithm
+// some tests involving the analyze algorithm
 
 void test1() {
     std::cout << std::endl << "Test 1:" << std::endl;
@@ -13,10 +13,10 @@ void test1() {
     game.playColumn(3);
     game.playColumn(3);
 
-    if (negamax(game, 13) == 18) {
+    if (analyze(game, 13) == 18) {
         std::cout << "Test 1.1 passed!" << std::endl;
     } else {
-        std::cout << "Test 1.1 failed!" << negamax(game, 13) << std::endl;
+        std::cout << "Test 1.1 failed!" << analyze(game, 13) << std::endl;
     };
 
     game = ConnectFour();
@@ -28,10 +28,10 @@ void test1() {
     game.playColumn(0);
 
 
-    if (negamax(game, 13) == 18) {
-        std::cout << "Test 1.1 passed!" << std::endl;
+    if (analyze(game, 13) == 18) {
+        std::cout << "Test 1.2 passed!" << std::endl;
     } else {
-        std::cout << "Test 1.1 failed!" << negamax(game, 13) << std::endl;
+        std::cout << "Test 1.2 failed!" << analyze(game, 13) << std::endl;
     };
 }
 

@@ -1,4 +1,5 @@
 depth = 15
+benchmark: slow computer
 
 # Negamax with alpha beta pruning
 Time: 14949 ms
@@ -14,3 +15,8 @@ Time: 3855 ms
 Time: 618 ms
 Time: 470 ms
 Time: 527 ms
+
+# added -Ofast flag
+Time: 115 ms
+Time: 91 ms
+Time: 88 ms

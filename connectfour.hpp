@@ -125,8 +125,11 @@ class ConnectFour {
             return possibleMask & ~(opponentWin >> 1);  // avoid to play below an opponent winning spot
         }
 
-        bool gameOver() const {
-            
+        bool isGameOver() const {
+            if (isDraw() || isAlignment()) {
+                return true;
+            }
+            return false;
         }
 
         bool canWinNext() const {
