@@ -37,8 +37,8 @@ class ConnectFour {
         }
 
         ConnectFour(std::string gamePosition) { 
-            for (char column : gamePosition) {
-                playColumn(column - 'A');
+            for (int i = 0; i < gamePosition.length(); i++) {
+                playColumn(gamePosition[i] - 48);
             }
         }
 

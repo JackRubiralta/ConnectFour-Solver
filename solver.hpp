@@ -26,41 +26,16 @@ int negamax(const ConnectFour &node, int alpha, int beta, int depth) {
     return value;
 };
 
-int analyze(const ConnectFour &node, int alpha, int beta, int depth) {
-    if (node.canWinNext()) {
-        return (ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - node.moveCounter) / 2;
+int analyze(const ConnectFour &root, int depth) {
+    if (root.canWinNext()) {
+        return (ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - root.moveCounter) / 2;
     }
-    return negamax(node, alpha, beta, depth);
-};
-
-int MTDF(ConnectFour root, int f, unsigned int depth) {
-    int guess = f;
-    int upperBound = +2147483647;
-    int  lowerBound = -2147483647;
-    int beta;
-    
-    while (lowerBound < upperBound) {
-        beta = std::max(guess, lowerBound + 1);
-        guess = analyze(root, beta - 1, beta, depth);
-        if (guess < beta) {
-            upperBound = guess;
-        } else {
-            lowerBound = guess;
-        }
-    }
-    return guess;
-}
-
-int analyze(const ConnectFour &node, int depth) {
-    if (node.canWinNext()) {
-        return (ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - node.moveCounter) / 2;
-    }
-    return negamax(node, -2147483647, 2147483647, depth);
+    return negamax(root, -2147483647, 2147483647, depth);
 };
 
 
 // find the best move as a column for the current player
-unsigned int solve(const ConnectFour &node, int depth) {};
+unsigned int solve(const ConnectFour &root, int depth) {};
 
 
 #endif
