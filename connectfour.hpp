@@ -36,11 +36,6 @@ class ConnectFour {
             moveCounter = rhs.moveCounter;
         }
 
-        ConnectFour(std::string gamePosition) { 
-            for (int i = 0; i < gamePosition.length(); i++) {
-                playColumn(gamePosition[i] - 48);
-            }
-        }
 
         bitboard possible() const {
             return (mask + bottomMask) & boardMask;
