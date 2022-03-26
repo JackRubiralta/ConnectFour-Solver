@@ -2,7 +2,7 @@
 
 int main() {
     ConnectFour game = ConnectFour();
-    const int DEPTH = 18; 
+    constexpr int DEPTH = 18; 
 
     int move;
     while (!game.isGameOver()) {
