@@ -1,7 +1,7 @@
 #include "../solver.hpp"
 #include <chrono>
 
-// some tests involving the analyze algorithm
+// some tests involving the solver algorithms
 
 void test1() {
     std::cout << std::endl << "Test 1:" << std::endl;
@@ -13,25 +13,10 @@ void test1() {
     game.playColumn(3);
     game.playColumn(3);
 
-    if (analyze(game, 13) == 18) {
+    if (solve(game, 13) == 18) {
         std::cout << "Test 1.1 passed!" << std::endl;
     } else {
-        std::cout << "Test 1.1 failed!" << analyze(game, 13) << std::endl;
-    };
-
-    game = ConnectFour();
-    game.playColumn(2);
-    game.playColumn(2);
-    game.playColumn(3);
-    game.playColumn(3);
-    game.playColumn(1);
-    game.playColumn(0);
-
-
-    if (analyze(game, 13) == 18) {
-        std::cout << "Test 1.2 passed!" << std::endl;
-    } else {
-        std::cout << "Test 1.2 failed!" << analyze(game, 13) << std::endl;
+        std::cout << "Test 1.1 failed!" << solve(game, 13) << std::endl;
     };
 }
 

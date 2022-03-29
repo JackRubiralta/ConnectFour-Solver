@@ -11,8 +11,8 @@ using bitboard = uint64_t;
 
 class ConnectFour {
     public:
-        static constexpr int WIDTH = 7;  
-        static constexpr int HEIGHT = 6; 
+        static constexpr unsigned int WIDTH = 7;  
+        static constexpr unsigned int HEIGHT = 6; 
 
         unsigned int moveCounter;
         bitboard position;
@@ -24,24 +24,23 @@ class ConnectFour {
             moveCounter++;
         };
 
-        void playColumn(int column) {
+        void playColumn(unsigned int column) {
             play((mask + bottomColumnMask(column)) & columnMask(column));
         }
 
         ConnectFour() : position{0}, mask{0}, moveCounter{0} {}
 
-        ConnectFour(const ConnectFour& rhs) { 
-            mask = rhs.mask;
-            position = rhs.position;
-            moveCounter = rhs.moveCounter;
+        ConnectFour(const ConnectFour& other) { 
+            mask = other.mask;
+            position = other.position;
+            moveCounter = other.moveCounter;
         }
-
 
         bitboard possible() const {
             return (mask + bottomMask) & boardMask;
         }
 
-        int currentPlayer() {
+        int currentPlayer() const {
             return moveCounter % 2;
         }
 
