@@ -60,7 +60,7 @@ class ConnectFour {
             }
         };
 
-        bool isAlignment() const { // other name is checkAlignment or checkDraw
+        bool isWin() const { // other name is checkAlignment or checkDraw
             // horizontal 
             bitboard position = this -> position ^ this -> mask;
 
@@ -126,7 +126,7 @@ class ConnectFour {
         }
 
         bool isGameOver() const {
-            if (isDraw() || isAlignment()) {
+            if (isDraw() || isWin()) {
                 return true;
             }
             return false;

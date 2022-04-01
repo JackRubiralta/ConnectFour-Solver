@@ -14,20 +14,25 @@ unsigned int bestDepth(unsigned int moveCounter) {
 
 // might have max and min values for value = -42 ect
 int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
+    if (depth <= 0) { return 0; }
     nodesExplored++;
+
     bitboard possible = node.possibleNonLosingMoves();
+    if (possible == 0) { return -(((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT -(int) node.moveCounter) / (int)2); }
+    if (node.isDraw()) { return 0; }
 
-    if (possible == 0) { return -((ConnectFour::WIDTH * ConnectFour::HEIGHT - node.moveCounter) / 2); }
-    if (depth <= 0 || node.isDraw()) { return 0; }
+    const int min = -((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)2 - (int)node.moveCounter) / (int)2;	// lower bound of score as opponent cannot win next move
+    if (alpha < min) {
+        alpha = min;                     // there is no need to keep alpha below our max possible score.
+        if(alpha >= beta) return alpha;  // prune the exploration if the [alpha;beta] window is empty.
+    }
 
-    // helps with pruning and speed
-    
-    const int max = (ConnectFour::WIDTH * ConnectFour::HEIGHT - 1 - node.moveCounter) / 2;	// upper bound of our score as we cannot win immediately
+    const int max = ((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)1 - (int)node.moveCounter) / (int)2;	// upper bound of our score as we cannot win immediately
     if (beta > max) {
         beta = max;                     // there is no need to keep beta above our max possible score.
         if (alpha >= beta) return beta;  // prune the exploration if the [alpha;beta] window is empty.
     }
-
+    
     int value = -2147483647;
     ConnectFour child;
     for (int column : columnOrder) { 
@@ -46,9 +51,10 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
 
 int solve(const ConnectFour &root, unsigned int depth) {
     if (root.canWinNext()) {
-        return (ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - root.moveCounter) / 2;
+        return ((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT + (int)1 - (int)root.moveCounter) / (int)2;
     }
-    int value = negamax(root, -100, 100, depth);
+  
+    int value = negamax(root, -2147483647, 2147483647, depth);
     return value;
 };
 
@@ -67,9 +73,7 @@ unsigned int analyze(ConnectFour &root, unsigned int depth) {
         
         node = ConnectFour(root);
         node.play(move);
-        if (node.isAlignment()) {
-            return column;
-        }
+        if (node.isWin()) { return column; }
         value = -solve(node, depth - 1);
         
         if (value > bestValue) {
