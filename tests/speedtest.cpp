@@ -11,7 +11,7 @@ clock_t timmingTest1() {
     
     nodesExplored = 0;
     clock_t timeRequired = clock();
-    int value = solve(game, 27);
+    int value = solve(game, 28);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 01 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
@@ -68,7 +68,7 @@ clock_t timmingTest5() {
     nodesExplored = 0;
 
     clock_t timeRequired = clock();
-    int value = solve(game, 28);
+    int value = solve(game, 29);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 05 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
@@ -245,7 +245,7 @@ clock_t timmingTest17() {
 }
 void speedTest() {
     clock_t totalRunTime = 0;
-    totalRunTime += timmingTest1();
+    // totalRunTime += timmingTest1();
     totalRunTime += timmingTest2();
     totalRunTime += timmingTest3();
     totalRunTime += timmingTest4();

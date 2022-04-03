@@ -33,7 +33,6 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
         if (alpha >= beta) return beta;  // prune the exploration if the [alpha;beta] window is empty.
     }
     
-    
     int value = -2147483647;
     ConnectFour child;
     for (int column : columnOrder) { 
