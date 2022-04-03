@@ -11,13 +11,13 @@ int main() {
     
     while (!game.isGameOver()) {
         game.print();
-        if (game.currentPlayer() == 0) {
+        if (game.currentPlayer() == 1) {
             std::cout << "Time: " << (runTime) / (double)CLOCKS_PER_SEC << "s" << std::endl; 
             std::cout << "Nodes explored: " << nodesExplored << std::endl;
             std::cout << "Nodes per second: " << nodesExplored / (int)(runTime) << std::endl;
         }
 
-        if (game.currentPlayer() == 1) {
+        if (game.currentPlayer() == 0) {
             nodesExplored = 0;
             startClock = clock(); 
             std::cout << "Computer thinking..." << std::endl;
