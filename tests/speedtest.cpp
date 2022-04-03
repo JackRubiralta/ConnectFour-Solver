@@ -104,21 +104,21 @@ clock_t timmingTest7() {
 
 clock_t timmingTest8() {
     const unsigned int movesPayer[13] = {0, 0, 0, 3, 0, 0, 4, 1, 0, 1, 5, 2, 3};
-    const int valueExpected = 0; // 1
+    const int valueExpected = 1;
     ConnectFour game = ConnectFour();
     for (unsigned int column : movesPayer) { game.playColumn(column); };
     nodesExplored = 0;
 
     clock_t timeRequired = clock();
-    int value = solve(game, 25);
+    int value = solve(game, 28);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 08 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
 clock_t timmingTest9() {
-    const unsigned int movesPayer[11] = {4, 3, 5, 3, 4, 6, 2, 1, 2, 3, 3};
-    const int valueExpected = 0; // -1
+    const unsigned int movesPayer[12] = {4, 3, 5, 3, 4, 6, 2, 1, 2, 3, 3, 0};
+    const int valueExpected = 7;
     ConnectFour game = ConnectFour();
     for (unsigned int column : movesPayer) { game.playColumn(column); };
     nodesExplored = 0;
@@ -245,23 +245,23 @@ clock_t timmingTest17() {
 }
 void speedTest() {
     clock_t totalRunTime = 0;
-    // totalRunTime += timmingTest1();
-    // totalRunTime += timmingTest2();
+    totalRunTime += timmingTest1();
+    totalRunTime += timmingTest2();
     totalRunTime += timmingTest3();
     totalRunTime += timmingTest4();
-    // totalRunTime += timmingTest5();
-    // totalRunTime += timmingTest6();
-    // totalRunTime += timmingTest7();
-    // totalRunTime += timmingTest8();
-    // totalRunTime += timmingTest9();
-    // totalRunTime += timmingTest10();
-    // totalRunTime += timmingTest11();
-    // totalRunTime += timmingTest12();
-    // totalRunTime += timmingTest13();
-    // totalRunTime += timmingTest14();
-    // totalRunTime += timmingTest15();
-    // totalRunTime += timmingTest16();
-    // totalRunTime += timmingTest17();
+    totalRunTime += timmingTest5();
+    totalRunTime += timmingTest6();
+    totalRunTime += timmingTest7();
+    totalRunTime += timmingTest8();
+    totalRunTime += timmingTest9();
+    totalRunTime += timmingTest10();
+    totalRunTime += timmingTest11();
+    totalRunTime += timmingTest12();
+    totalRunTime += timmingTest13();
+    totalRunTime += timmingTest14();
+    totalRunTime += timmingTest15();
+    totalRunTime += timmingTest16();
+    totalRunTime += timmingTest17();
     
 
     std::cout << std::endl << "Total run time: " << (float)totalRunTime / CLOCKS_PER_SEC << " s" << std::endl;
