@@ -33,28 +33,28 @@ clock_t timmingTest2() {
 }
 
 clock_t timmingTest3() {
-    const unsigned int movesPayer[13] = {5, 0, 3, 2, 0, 4, 5, 1, 6, 4, 4, 2, 1};
-    const int valueExpected = 0;
+    const unsigned int movesPayer[13] = {5, 0, 3, 2, 0, 4, 5, 1, 6, 4, 4, 1};
+    const int valueExpected = 12;
     ConnectFour game = ConnectFour();
     for (unsigned int column : movesPayer) { game.playColumn(column); };
     nodesExplored = 0;
 
     clock_t timeRequired = clock();
-    int value = solve(game, 20);
+    int value = solve(game, 22);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 03 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
 clock_t timmingTest4() {
-    const unsigned int movesPayer[13] = {5, 0, 3, 2, 0, 4, 5, 1, 6, 4, 4, 2, 1};
-    const int valueExpected = 0;
+    const unsigned int movesPayer[14] = {5, 0, 3, 2, 0, 4, 5, 1, 6, 4, 4, 2, 1, 0};
+    const int valueExpected = 3;
     ConnectFour game = ConnectFour();
     for (unsigned int column : movesPayer) { game.playColumn(column); };
     nodesExplored = 0;
 
     clock_t timeRequired = clock();
-    int value = solve(game, 20);
+    int value = solve(game, 27);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 04 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
@@ -247,8 +247,8 @@ void speedTest() {
     clock_t totalRunTime = 0;
     // totalRunTime += timmingTest1();
     // totalRunTime += timmingTest2();
-    // totalRunTime += timmingTest3();
-    // totalRunTime += timmingTest4();
+    totalRunTime += timmingTest3();
+    totalRunTime += timmingTest4();
     // totalRunTime += timmingTest5();
     // totalRunTime += timmingTest6();
     // totalRunTime += timmingTest7();
