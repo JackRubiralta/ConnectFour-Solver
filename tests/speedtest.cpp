@@ -250,8 +250,8 @@ void speedTest() {
     // totalRunTime += timmingTest3();
     // totalRunTime += timmingTest4();
     // totalRunTime += timmingTest5();
-    totalRunTime += timmingTest6();
-    totalRunTime += timmingTest7();
+    // totalRunTime += timmingTest6();
+    // totalRunTime += timmingTest7();
     // totalRunTime += timmingTest8();
     // totalRunTime += timmingTest9();
     // totalRunTime += timmingTest10();
@@ -260,8 +260,8 @@ void speedTest() {
     // totalRunTime += timmingTest13();
     // totalRunTime += timmingTest14();
     // totalRunTime += timmingTest15();
-    totalRunTime += timmingTest16();
-    totalRunTime += timmingTest17();
+    // totalRunTime += timmingTest16();
+    // totalRunTime += timmingTest17();
     
 
     std::cout << std::endl << "Total run time: " << (float)totalRunTime / CLOCKS_PER_SEC << " s" << std::endl;

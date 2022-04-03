@@ -21,15 +21,15 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
     if (possible == 0) { return -(((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT -(int) node.moveCounter) / (int)2); }
     if (node.isDraw()) { return 0; }
 
-    const int min = -((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)2 - (int)node.moveCounter) / (int)2;	// lower bound of score as opponent cannot win next move
-    if (alpha < min) {
-        alpha = min;                     // there is no need to keep alpha below our max possible score.
+    const int minValue = -((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)2 - (int)node.moveCounter) / (int)2;	// lower bound of score as opponent cannot win next move
+    if (alpha < minValue) {
+        alpha = minValue;                     // there is no need to keep alpha below our max possible score.
         if(alpha >= beta) return alpha;  // prune the exploration if the [alpha;beta] window is empty.
     }
 
-    const int max = ((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)1 - (int)node.moveCounter) / (int)2;	// upper bound of our score as we cannot win immediately
-    if (beta > max) {
-        beta = max;                     // there is no need to keep beta above our max possible score.
+    const int maxValue = ((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)1 - (int)node.moveCounter) / (int)2;	// upper bound of our score as we cannot win immediately
+    if (beta > maxValue) {
+        beta = maxValue;                     // there is no need to keep beta above our max possible score.
         if (alpha >= beta) return beta;  // prune the exploration if the [alpha;beta] window is empty.
     }
     
