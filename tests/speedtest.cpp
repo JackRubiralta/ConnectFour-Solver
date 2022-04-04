@@ -13,7 +13,7 @@ clock_t timmingTest1() {
     clock_t timeRequired = clock();
     int value = solve(game, 28);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 01 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 01 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -28,7 +28,7 @@ clock_t timmingTest2() {
     clock_t timeRequired = clock();
     int value = solve(game, 27);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 02 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 02 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -42,7 +42,7 @@ clock_t timmingTest3() {
     clock_t timeRequired = clock();
     int value = solve(game, 22);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 03 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 03 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -56,7 +56,7 @@ clock_t timmingTest4() {
     clock_t timeRequired = clock();
     int value = solve(game, 27);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 04 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 04 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -70,7 +70,7 @@ clock_t timmingTest5() {
     clock_t timeRequired = clock();
     int value = solve(game, 29);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 05 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 05 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -84,7 +84,7 @@ clock_t timmingTest6() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 06 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 06 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -98,7 +98,7 @@ clock_t timmingTest7() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 07 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 07 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -112,7 +112,7 @@ clock_t timmingTest8() {
     clock_t timeRequired = clock();
     int value = solve(game, 28);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 08 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 08 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -126,7 +126,7 @@ clock_t timmingTest9() {
     clock_t timeRequired = clock();
     int value = solve(game, 25);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 09 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 09 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "failed") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -140,7 +140,7 @@ clock_t timmingTest10() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 10 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 10 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -154,7 +154,7 @@ clock_t timmingTest11() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 11 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 11 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -169,7 +169,7 @@ clock_t timmingTest12() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 12 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 12 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -184,7 +184,7 @@ clock_t timmingTest13() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 13 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 13 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -198,7 +198,7 @@ clock_t timmingTest14() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 14 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 14 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -212,7 +212,7 @@ clock_t timmingTest15() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 15 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 15 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -226,7 +226,7 @@ clock_t timmingTest16() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 16 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 16 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 
@@ -240,13 +240,13 @@ clock_t timmingTest17() {
     clock_t timeRequired = clock();
     int value = solve(game, 20);
     timeRequired = clock() - timeRequired;
-    std::cout << std::endl << "Timming Test 17 " << (value == valueExpected ? "passed" : "failed") << "! " << "Expected: " << valueExpected << ", " << "Got: " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
+    std::cout << std::endl << "Timming Test 17 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
 }
 void speedTest() {
     clock_t totalRunTime = 0;
     // totalRunTime += timmingTest1();
-    totalRunTime += timmingTest2();
+    // totalRunTime += timmingTest2();
     totalRunTime += timmingTest3();
     totalRunTime += timmingTest4();
     totalRunTime += timmingTest5();
