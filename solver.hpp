@@ -7,7 +7,7 @@
 // https://www.ics.uci.edu/~eppstein/180a/990202b.html
 constexpr int columnOrder[ConnectFour::WIDTH] = {3, 2, 4, 1, 5, 0, 6};
 unsigned int nodesExplored;
-TranspositionTable transpositionTable = TranspositionTable();
+TranspositionTable transpositionTable = TranspositionTable(100000000);
 
 unsigned int bestDepth(unsigned int moveCounter) {
     const unsigned int counterToDepth[42] = {15, 15, 18, 18, 19, 19, 20, 20, 22, 22, 24, 24, 25, 25, 27, 27, 30, 30, 33, 33, 35, 37, 37, 40, 40, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
@@ -43,9 +43,9 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
         if (entry.flag == EXACT) {
             return entry.value;
         } else if (entry.flag == LOWERBOUND) {
-            alpha = std::max(alpha, entry.value);
+            alpha = std::max(alpha, int(entry.value));
         } else if (entry.flag == UPPERBOUND) {
-            beta = std::min(beta, entry.value);
+            beta = std::min(beta, int(entry.value));
         }
 
         if (alpha >= beta) { return entry.value; }

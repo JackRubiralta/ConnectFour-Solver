@@ -1,21 +1,38 @@
 #include "connectfour.hpp"
 #include <cstring>
 
-enum Flag { INVALID, EXACT, LOWERBOUND, UPPERBOUND };
+enum Flag : uint8_t {
+    INVALID,
+    EXACT,
+    LOWERBOUND,
+    UPPERBOUND
+};
 
 struct Entry {
-    int value;
+    int8_t value;
     Flag flag;
     Entry() : value(0), flag(INVALID) {}
 };
 
+bool isPrime(unsigned int number) {
+    for (int i = 2; i <= number / 2; ++i) {
+        if (number % i == 0) { return false; }
+    }
+    return true;
+}
+
+unsigned int closestPrime(unsigned int number) {
+    for (unsigned int n = number; n != 2; n++) {
+        if (isPrime(n)) {
+            return n;
+        }
+    }
+    return 0;
+}
+
 class TranspositionTable {
     public:
-        // 10602547
-        // 20602523
-        // 40000001
-        // 100000001
-        const unsigned int size = 89999999;
+        unsigned int size;
         Entry *entries;
         bitboard *keys;
 
@@ -23,8 +40,7 @@ class TranspositionTable {
             return key % size;
         }
 
-        // size = 89999999
-        TranspositionTable() {
+        TranspositionTable(unsigned int size) : size(closestPrime(size)) {
             entries = new Entry[size];
             keys = new bitboard[size];
             reset();
