@@ -134,6 +134,10 @@ class ConnectFour {
             return false;
         }
 
+        bool canPlayColumn(unsigned int column) const {
+            return (mask & topColumnMask(column)) == 0;
+        }
+
         bool canWinNext() const {
             return winningPositions() & possible();
         }

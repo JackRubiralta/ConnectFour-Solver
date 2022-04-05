@@ -245,9 +245,9 @@ clock_t timmingTest17() {
 }
 void speedTest() {
     clock_t totalRunTime = 0;
-    // totalRunTime += timmingTest1();
-    // totalRunTime += timmingTest2();
-    // totalRunTime += timmingTest3();
+    totalRunTime += timmingTest1();
+    totalRunTime += timmingTest2();
+    totalRunTime += timmingTest3();
     totalRunTime += timmingTest4();
     totalRunTime += timmingTest5();
     totalRunTime += timmingTest6();

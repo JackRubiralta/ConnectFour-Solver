@@ -35,10 +35,10 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
         if (alpha >= beta) return beta;  // prune the exploration if the [alpha;beta] window is empty.
     }
 
-
     const int alphaOriginal = alpha;
 
     Entry entry = transpositionTable.lookup(node.hash());
+    // this caused me alot of pain as the == operator was not working beacuse I had put entry.flag = EXACT instead of entry.flag == EXACT 
     if (entry.flag != INVALID) {
         if (entry.flag == EXACT) {
             return entry.value;
