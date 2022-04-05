@@ -5,13 +5,13 @@
 
 clock_t timmingTest1() {
     const unsigned int movesPayer[5] = {0, 2, 6, 0, 1};
-    const int valueExpected = 4;
+    const int valueExpected = 3;
     ConnectFour game = ConnectFour();
     for (unsigned int column : movesPayer) { game.playColumn(column); };
     
     nodesExplored = 0;
     clock_t timeRequired = clock();
-    int value = solve(game, 28);
+    int value = solve(game, 34);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 01 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
@@ -26,7 +26,7 @@ clock_t timmingTest2() {
     nodesExplored = 0;
 
     clock_t timeRequired = clock();
-    int value = solve(game, 27);
+    int value = solve(game, 29);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 02 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;
@@ -245,8 +245,8 @@ clock_t timmingTest17() {
 }
 void speedTest() {
     clock_t totalRunTime = 0;
-    // totalRunTime += timmingTest1();
-    // totalRunTime += timmingTest2();
+    totalRunTime += timmingTest1();
+    totalRunTime += timmingTest2();
     totalRunTime += timmingTest3();
     totalRunTime += timmingTest4();
     totalRunTime += timmingTest5();
