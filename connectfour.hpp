@@ -60,6 +60,8 @@ class ConnectFour {
             }
         };
 
+        bitboard hash() const { return position + mask; }
+
         bool isWin() const { // other name is checkAlignment or checkDraw
             // horizontal 
             bitboard position = this -> position ^ this -> mask;

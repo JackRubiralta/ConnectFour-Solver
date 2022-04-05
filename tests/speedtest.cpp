@@ -182,7 +182,7 @@ clock_t timmingTest13() {
     nodesExplored = 0;
 
     clock_t timeRequired = clock();
-    int value = solve(game, 20);
+    int value = solve(game, 25);
     timeRequired = clock() - timeRequired;
     std::cout << std::endl << "Timming Test 13 " << (value == valueExpected ? "\u001b[32mpassed\u001b[0m" : "\u001b[31mfailed\u001b[0m") << ": " << "expected " << valueExpected << ", " << "got " << value << std::endl << "Node Explored: " << nodesExplored << std::endl;
     return timeRequired;

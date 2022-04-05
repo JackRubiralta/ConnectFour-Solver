@@ -2,10 +2,12 @@
 #define SOLVER_HPP
 #include "connectfour.hpp"
 #include <time.h>
+#include "transpositiontable.hpp"
 
 // https://www.ics.uci.edu/~eppstein/180a/990202b.html
 constexpr int columnOrder[ConnectFour::WIDTH] = {3, 2, 4, 1, 5, 0, 6};
 unsigned int nodesExplored;
+TranspositionTable transpositionTable = TranspositionTable();
 
 unsigned int bestDepth(unsigned int moveCounter) {
     const unsigned int counterToDepth[42] = {15, 15, 18, 18, 19, 19, 20, 20, 22, 22, 24, 24, 25, 25, 27, 27, 30, 30, 33, 33, 35, 37, 37, 40, 40, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
@@ -32,6 +34,22 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
         beta = maxValue;                     // there is no need to keep beta above our max possible score.
         if (alpha >= beta) return beta;  // prune the exploration if the [alpha;beta] window is empty.
     }
+
+
+    const int alphaOriginal = alpha;
+
+    Entry entry = transpositionTable.lookup(node.hash());
+    if (entry.flag != INVALID) {
+        if (entry.flag == EXACT) {
+            return entry.value;
+        } else if (entry.flag == LOWERBOUND) {
+            alpha = std::max(alpha, entry.value);
+        } else if (entry.flag == UPPERBOUND) {
+            beta = std::min(beta, entry.value);
+        }
+
+        if (alpha >= beta) { return entry.value; }
+    }
     
     int value = -2147483647;
     ConnectFour child;
@@ -46,6 +64,16 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
         alpha = std::max(alpha, value);
         if (alpha >= beta) { break; }
     }
+
+    entry.value = value;
+    if (alpha <= alphaOriginal) {
+        entry.flag = UPPERBOUND;
+    } else if (value >= beta) {
+        entry.flag = LOWERBOUND;
+    } else {
+        entry.flag = EXACT;
+    }
+    transpositionTable.insert(node.hash(), entry);
     return value;
 };
 
