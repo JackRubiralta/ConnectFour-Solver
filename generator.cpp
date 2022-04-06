@@ -6,17 +6,17 @@
 #include <sstream>
 
 std::unordered_set<uint64_t> visitedNodes;
-std::ofstream openingBookFile("OpeningBook.txt");
+std::ofstream openingBookFile("book.txt");
 
 
 
 int generate(const ConnectFour &node, const unsigned int depth) {
     if (depth == 0) {
-        return solve(node, 4); // have 30 bc cant have ties so we have depth 
+        return solve(node, 10); // have 30 when using friend computer
     }
 
     if (node.isWin()) {
-        return -((ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - node.moveCounter) / 2);;
+        return -(((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT + (int)1 -(int) node.moveCounter) / (int)2);;
     }
 
     ConnectFour child;
@@ -31,9 +31,8 @@ int generate(const ConnectFour &node, const unsigned int depth) {
             
             bitboard key = child.hash(); 
             if (value != 0 && (visitedNodes.insert(key).second)) { // moveCounter + depth < 42
-
-                openingBookFile << key << " " << value << std::endl;
-                // std::cout << key << " " << value << std::endl;
+                openingBookFile << key << " " << -value << std::endl;
+                // std::cout << key << " " << -value << std::endl;
             }
         }
     }
@@ -46,6 +45,7 @@ int generate(const ConnectFour &node, const unsigned int depth) {
 
 int main(int argc, const char** argv) {
     ConnectFour game = ConnectFour();   
-    std::cout << generate(game, 8) << std::endl;
+
+    std::cout << generate(game, 6) << std::endl;
     return 0;
 }
