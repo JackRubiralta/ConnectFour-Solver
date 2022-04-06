@@ -39,7 +39,7 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
 
     Entry entry = transpositionTable.lookup(node.hash());
     // this caused me alot of pain as the == operator was not working beacuse I had put entry.flag = EXACT instead of entry.flag == EXACT 
-    if (entry.flag != INVALID) {
+    if ((entry.flag != INVALID) && (entry.depth >= depth)) {
         if (entry.flag == EXACT) {
             return entry.value;
         } else if (entry.flag == LOWERBOUND) {
@@ -73,6 +73,7 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
     } else {
         entry.flag = EXACT;
     }
+    entry.depth = depth;
     transpositionTable.insert(node.hash(), entry);
     return value;
 };

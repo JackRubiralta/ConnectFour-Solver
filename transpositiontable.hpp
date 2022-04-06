@@ -11,7 +11,8 @@ enum Flag : uint8_t {
 struct Entry {
     int8_t value;
     Flag flag;
-    Entry() : value(0), flag(INVALID) {}
+    uint8_t depth;
+    Entry() : value(0), depth(0), flag(INVALID) {}
 };
 
 bool isPrime(unsigned int number) {
