@@ -1,13 +1,15 @@
 #ifndef SOLVER_HPP
 #define SOLVER_HPP
 #include "connectfour.hpp"
+#include "openingbook.hpp"
+
 #include <time.h>
-#include "transpositiontable.hpp"
 
 // https://www.ics.uci.edu/~eppstein/180a/990202b.html
 constexpr int columnOrder[ConnectFour::WIDTH] = {3, 2, 4, 1, 5, 0, 6};
 unsigned int nodesExplored;
 TranspositionTable transpositionTable = TranspositionTable(100000000);
+OpeningBook openingBook = OpeningBook("book.txt");
 
 unsigned int bestDepth(unsigned int moveCounter) {
     const unsigned int counterToDepth[42] = {15, 15, 18, 18, 19, 19, 20, 20, 22, 22, 24, 24, 25, 25, 27, 27, 30, 30, 33, 33, 35, 37, 37, 40, 40, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
@@ -19,8 +21,14 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
     if (depth <= 0) { return 0; }
     nodesExplored++;
 
+    int bookValue = openingBook.lookup(node.hash());
+    if (bookValue != 0) { return bookValue; }
+    // with:    28306927
+    // without: 33878364
+
+
     bitboard possible = node.possibleNonLosingMoves();
-    if (possible == 0) { return -(((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT -(int) node.moveCounter) / (int)2); }
+    if (possible == 0) { return -(((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT -(int)node.moveCounter) / (int)2); }
     if (node.isDraw()) { return 0; }
 
     const int minValue = -((int)ConnectFour::WIDTH * (int)ConnectFour::HEIGHT - (int)2 - (int)node.moveCounter) / (int)2;	// lower bound of score as opponent cannot win next move

@@ -1,4 +1,8 @@
 #include "connectfour.hpp"
+#include "transpositiontable.hpp"
+
+
+
 #include <cstring>
 #include <fstream>
 #include <sstream>
@@ -13,7 +17,7 @@ class OpeningBook {
         }
 
         OpeningBook(const std::string filename) {
-            size = 10000000;
+            size = closestPrime(10000000);
             entries = new int8_t[size];
             keys = new bitboard[size];
             reset();

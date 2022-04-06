@@ -8,11 +8,9 @@
 std::unordered_set<uint64_t> visitedNodes;
 std::ofstream openingBookFile("book.txt");
 
-
-
 int generate(const ConnectFour &node, const unsigned int depth) {
     if (depth == 0) {
-        return solve(node, 10); // have 30 when using friend computer
+        return solve(node, 15); // have 30 when using friend computer
     }
 
     if (node.isWin()) {
@@ -37,15 +35,12 @@ int generate(const ConnectFour &node, const unsigned int depth) {
         }
     }
 
-    // save to opening book
     return bestValue;
 
 }
 
 
 int main(int argc, const char** argv) {
-    ConnectFour game = ConnectFour();   
-
-    std::cout << generate(game, 6) << std::endl;
+    generate( ConnectFour(), 8);
     return 0;
 }
