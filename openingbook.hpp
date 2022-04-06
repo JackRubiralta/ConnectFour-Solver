@@ -1,78 +1,57 @@
 #include "connectfour.hpp"
 #include <cstring>
-
-enum Flag : uint8_t { INVALID, VALID };
-
-struct Entry {
-    int8_t value;
-    Flag flag;
-    Entry() : value(0), flag(INVALID) {}
-};
-
-bool isPrime(unsigned int number) {
-    for (int i = 2; i <= number / 2; ++i) {
-        if (number % i == 0) { return false; }
-    }
-    return true;
-}
-
-unsigned int closestPrime(unsigned int number) {
-    for (unsigned int n = number; n != 2; n++) {
-        if (isPrime(n)) {
-            return n;
-        }
-    }
-    return 0;
-}
-
-class TranspositionTable {
+#include <fstream>
+#include <sstream>
+class OpeningBook {
     public:
         unsigned int size;
-        Entry *entries;
+        int8_t *entries;
         bitboard *keys;
 
         unsigned int index(bitboard key) {
             return key % size;
         }
 
-        TranspositionTable(unsigned int size) : size(closestPrime(size)) {
-            entries = new Entry[size];
+        OpeningBook(const std::string filename) {
+            size = 10000000;
+            entries = new int8_t[size];
             keys = new bitboard[size];
             reset();
+
+
+            std::ifstream openingBookFile(filename);
+            std::string line;
+            while (std::getline(openingBookFile, line)) {
+                std::istringstream iss(line);
+                uint64_t key;
+                int value;
+                iss >> key >> value;
+                insert(key, value);
+            }
         }
 
-        ~TranspositionTable() {
+        ~OpeningBook() {
             delete[] entries;
             delete[] keys;
         }
 
         void reset() {
-            memset(entries, 0, sizeof(Entry) * size);
+            memset(entries, 0, sizeof(int8_t) * size);
             memset(keys, 0, sizeof(bitboard) * size);
         }
 
-        void insert(bitboard key, Entry entry) {
+        void insert(bitboard key, int8_t entry) {
             unsigned int pos = index(key);
             keys[pos] = key;
             entries[pos] = entry;
         }
 
-        Entry lookup(bitboard key) {
+        int8_t lookup(bitboard key) {
             unsigned int pos = index(key);
             if (keys[pos] == key) {
                 return entries[pos];
             } else {
-                return Entry();
+                return 0;
             }
-        }
-
-        unsigned int length() {
-            unsigned int length = 0;
-            for (unsigned int i = 0; i < size; i++) {
-                if (keys[i] != 0) {
-                    length++;
-                }
-            }
-            return length;
         }
 };
