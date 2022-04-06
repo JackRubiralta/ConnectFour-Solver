@@ -19,20 +19,21 @@ int generate(const ConnectFour &node, const unsigned int depth) {
         return -((ConnectFour::WIDTH * ConnectFour::HEIGHT + 1 - node.moveCounter) / 2);;
     }
 
+    ConnectFour child;
     int bestValue = -2147483647;
     for (int column = 0; column < ConnectFour::WIDTH; column++) {
         if (node.canPlayColumn(column)) {
-            ConnectFour child(node);
+            child = ConnectFour(node);
             child.playColumn(column);
 
             int value = -generate(child, depth - 1);
             bestValue = std::max(bestValue, value);
             
-            bitboard key = node.hash(); 
-            if (value != 0 && !visitedNodes.insert(key).second) { // moveCounter + depth < 42
+            bitboard key = child.hash(); 
+            if (value != 0 && (visitedNodes.insert(key).second)) { // moveCounter + depth < 42
 
                 openingBookFile << key << " " << value << std::endl;
-                std::cout << key << " " << value << std::endl;
+                // std::cout << key << " " << value << std::endl;
             }
         }
     }
