@@ -17,7 +17,7 @@ class OpeningBook {
         }
 
         OpeningBook(const std::string filename) {
-            size = closestPrime(10000000);
+            size = closestPrime(12000000);
             entries = new int8_t[size];
             keys = new bitboard[size];
             reset();

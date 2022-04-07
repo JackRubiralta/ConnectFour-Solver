@@ -22,9 +22,9 @@ int negamax(const ConnectFour &node, int alpha, int beta, unsigned int depth) {
     nodesExplored++;
 
     int bookValue = openingBook.lookup(node.hash());
-    if (bookValue != 0) { return bookValue; }
-    // with:    28306927
-    // without: 33878364
+    // if (bookValue != 0) { return bookValue; }
+    // with:    234470120
+    // without: 276406735
 
 
     bitboard possible = node.possibleNonLosingMoves();

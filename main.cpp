@@ -14,7 +14,7 @@ int main() {
         nodesExplored = 0;
         startClock = clock(); 
         std::cout << "Computer thinking..." << std::endl;
-        value = solve(game, 30);
+        value = solve(game, 34);
         runTime = clock() - startClock;
         std::cout << "Time: " << (runTime) / (double)CLOCKS_PER_SEC << "s" << std::endl; 
         std::cout << "Nodes explored: " << nodesExplored << std::endl;

@@ -10,7 +10,7 @@ std::ofstream openingBookFile("book.txt");
 
 int generate(const ConnectFour &node, const unsigned int depth) {
     if (depth == 0) {
-        return solve(node, 15); // have 30 when using friend computer
+        return solve(node, 20); // have 30 when using friend computer
     }
 
     if (node.isWin()) {
